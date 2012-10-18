@@ -75,15 +75,15 @@ class AboutLists(Koan):
         stack = [10, 20, 30, 40]
         stack.append('last')
         
-        self.assertEqual(__, stack)
+        self.assertEqual([10, 20, 30, 40, 'last'], stack)
         
         popped_value = stack.pop()
-        self.assertEqual(__, popped_value)
-        self.assertEqual(__, stack)
+        self.assertEqual('last', popped_value)
+        self.assertEqual([10, 20, 30, 40], stack)
         
         popped_value = stack.pop(1)
-        self.assertEqual(__, popped_value)
-        self.assertEqual(__, stack)
+        self.assertEqual(20, popped_value)
+        self.assertEqual([10, 30, 40], stack)
         
         # Notice that there is a "pop" but no "push" in python?
         
@@ -99,8 +99,8 @@ class AboutLists(Koan):
         queue = deque([1, 2])
         queue.append('last')
         
-        self.assertEqual(__, list(queue))
+        self.assertEqual([1, 2, 'last'], list(queue))
         
         popped_value = queue.popleft()
-        self.assertEqual(__, popped_value)
-        self.assertEqual(__, list(queue))
+        self.assertEqual(1, popped_value)
+        self.assertEqual([2, 'last'], list(queue))
