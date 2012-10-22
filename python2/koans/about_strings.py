@@ -128,7 +128,7 @@ world!
     def test_strings_can_be_split(self):
         string = "Sausage Egg Cheese"
         words = string.split()
-        self.assertEqual([__, __, __], words)
+        self.assertEqual(["Sausage", "Egg", "Cheese"], words)
     
     def test_strings_can_be_split_with_different_patterns(self):
         import re  # import python regular expression library
@@ -138,7 +138,7 @@ world!
         
         words = pattern.split(string)
         
-        self.assertEqual([__, __, __, __], words)
+        self.assertEqual(["the", "rain", "in", "spain"], words)
         
         # `pattern` is a Python regular expression pattern which matches
         # ',' or ';'
