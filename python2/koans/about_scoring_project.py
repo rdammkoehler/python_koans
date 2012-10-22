@@ -32,11 +32,31 @@ from runner.koan import *
 # More scoring examples are given in the tests below:
 #
 # Your goal is to write the score method.
+def count(tmap,die):
+    tmap[die] += 1
 
 def score(dice):
-    # You need to write this method
-    pass
-
+    score = 0
+    dieCount = {}
+    for die in dice:
+        dieCount[die] = 0
+    for die in dice:
+        dieCount[die] += 1
+    if 1 in dieCount:
+        if dieCount[1] == 3:
+            score += 1000
+        elif dieCount[1] > 3:
+            score += 1000 + ((dieCount[1]-3)*100)
+        else:
+            score += dieCount[1] * 100
+    for die in range(2,7):
+        if die in dieCount and dieCount[die] >= 3:
+            score += 100*die
+    if 5 in dieCount and dieCount[5] < 3:
+        score += dieCount[5]*50
+    if 5 in dieCount and dieCount[5] > 3:
+        score += (dieCount[5]-3)*50
+    return score
 
 class AboutScoringProject(Koan):
     def test_score_of_an_empty_list_is_zero(self):
