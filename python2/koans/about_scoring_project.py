@@ -52,10 +52,11 @@ def score(dice):
     for die in range(2,7):
         if die in dieCount and dieCount[die] >= 3:
             score += 100*die
-    if 5 in dieCount and dieCount[5] < 3:
-        score += dieCount[5]*50
-    if 5 in dieCount and dieCount[5] > 3:
-        score += (dieCount[5]-3)*50
+    if 5 in dieCount:
+        if dieCount[5] < 3:
+            score += dieCount[5]*50
+        if dieCount[5] > 3:
+            score += (dieCount[5]-3)*50
     return score
 
 class AboutScoringProject(Koan):
