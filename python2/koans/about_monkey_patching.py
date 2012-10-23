@@ -36,7 +36,7 @@ class AboutMonkeyPatching(Koan):
         try:
             int.is_even = lambda self: (self % 2) == 0
         except StandardError as ex:
-            self.assertMatch(TypeError, ex[0])
+            self.assertMatch("can't set attributes of built-in/extension type 'int'", ex[0])
 
     # ------------------------------------------------------------------
 
@@ -46,5 +46,5 @@ class AboutMonkeyPatching(Koan):
     def test_subclasses_of_built_in_classes_can_be_be_monkey_patched(self):
         self.MyInt.is_even = lambda self: (self % 2) == 0
     
-        self.assertEqual(____, self.MyInt(1).is_even())
-        self.assertEqual(____, self.MyInt(2).is_even())
+        self.assertEqual(False, self.MyInt(1).is_even())
+        self.assertEqual(True, self.MyInt(2).is_even())
