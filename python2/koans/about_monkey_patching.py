@@ -15,7 +15,7 @@ class AboutMonkeyPatching(Koan):
     
     def test_as_defined_dogs_do_bark(self):
         fido = self.Dog()
-        self.assertEqual(__, fido.bark())
+        self.assertEqual('WOOF', fido.bark())
 
     # ------------------------------------------------------------------
     
@@ -27,8 +27,8 @@ class AboutMonkeyPatching(Koan):
         self.Dog.wag = wag
 
         fido = self.Dog()
-        self.assertEqual(__, fido.wag())
-        self.assertEqual(__, fido.bark())
+        self.assertEqual('HAPPY', fido.wag())
+        self.assertEqual('WOOF', fido.bark())
     
     # ------------------------------------------------------------------
     
@@ -36,7 +36,7 @@ class AboutMonkeyPatching(Koan):
         try:
             int.is_even = lambda self: (self % 2) == 0
         except StandardError as ex:
-            self.assertMatch(__, ex[0])
+            self.assertMatch(TypeError, ex[0])
 
     # ------------------------------------------------------------------
 
